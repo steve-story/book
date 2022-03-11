@@ -4,7 +4,7 @@
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
 			<!-- 循环渲染轮播图的 item 项 -->
 			<swiper-item v-for="(item, i) in swiperList" :key="i">
-				<navigator class="swiper-item" :url="'/subpkg/ad_detail/ad_detail?course_id='+item.course_id">
+				<navigator class="swiper-item" :url="'/subpkg/ad_detail/ad_detail?ad_id='+item.ad_id">
 					<!-- 动态绑定图片的 src 属性 -->
 					<image :src="item.image_src"></image>
 				</navigator>
@@ -64,13 +64,13 @@
 				// 轮播图的数据列表
 				swiperList: [{
 					image_src: '/static/home_icons/ad1.jpg',
-					course_id: '1'
+					ad_id: '1'
 				}, {
 					image_src: '/static/home_icons/ad2.jpg',
-					course_id: '2'
+					ad_id: '2'
 				}, {
 					image_src: '/static/home_icons/ad3.jpg',
-					course_id: '3'
+					ad_id: '3'
 				}],
 				navList: [],
 				newsList: [{
@@ -84,8 +84,11 @@
 					news_id: '3'
 				}],
 				courseList:[{
-					image_src: '/static/home_icons/gaoshu1.png',
-					news_id: '1'
+					image_src: '/static/home_icons/course1.png',
+					courses_id: '1'
+				},{
+					image_src: '/static/home_icons/course2.png',
+					courses_id: '2'
 				}]
 			};
 		},
@@ -179,19 +182,22 @@
 			height: 60rpx;
 		}
 	}
-	.news_list {
+	.course_list,.news_list {
 		display: flex;
 		justify-content: space-around;
 		margin-top: 10rpx;
 		margin-bottom: 10rpx;
-	
-		.newsList_img {
-			width: 230rpx;
-			height: 260rpx;
-		}
+	}
+	.newsList_img {
+		width: 230rpx;
+		height: 260rpx;
+	}
+	.courseList_img{
+		width: 308rpx;
+		height: 280rpx;
 	}
 	
-	.course_line{
+	.course_line{  
 		height: 85rpx;
 		display: flex;
 		flex-direction: row;
