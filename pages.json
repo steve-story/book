@@ -2,7 +2,6 @@
 	"pages": [{
 		"path": "pages/home/home",
 		"style": {
-			"backgroundColor": "#F8F8F8",
 			"enablePullDownRefresh": false
 		}
 
@@ -39,17 +38,19 @@
 				"navigationBarTitleText": "课程预约",
 				"enablePullDownRefresh": false
 			}
-
-		}    ,{
-                    "path" : "course_list/course_list",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
+		}, {
+			"path": "course_list/course_list",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "search/search",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

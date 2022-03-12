@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<my-search @click="gotoSearch()"></my-search>
+
 		<view class="scroll-view-container">
 			<!-- 左侧的滚动视图区域 -->
 			<scroll-view class="left-scroll-view" scroll-y :style="{height: wh + 'px'}">
@@ -13,8 +15,9 @@
 			<scroll-view class="right-scroll-view" scroll-y :style="{height: wh + 'px'}" :scroll-top="scrollTop">
 				<!-- 三级分类列表 -->
 				<view class="cate-lv2-list">
-					<view class="cate-lv2-item" v-for="(item2, i2) in cateLevel2" :key="i2" @click="gotoCourseList(item2)">
-						
+					<view class="cate-lv2-item" v-for="(item2, i2) in cateLevel2" :key="i2"
+						@click="gotoCourseList(item2)">
+
 						<image :src="item2.cat_icon"></image>
 					</view>
 				</view>
@@ -58,20 +61,20 @@
 						course_id: '5',
 						course_name: '考古与人类',
 						cat_icon: '/static/cate_icons/course5.png',
-					},{
+					}, {
 						course_id: '6',
 						course_name: '幸福心理学',
 						cat_icon: '/static/cate_icons/course6.png',
-					},{
+					}, {
 						course_id: '7',
 						course_name: '中国古代史',
 						cat_icon: '/static/cate_icons/course7.png',
-					},{
+					}, {
 						course_id: '8',
 						course_name: '国际关系与中国外交',
 						cat_icon: '/static/cate_icons/course8.png',
 					}]
-				},{
+				}, {
 					cat_id: '2',
 					cat_name: '计算机类',
 					children: [{
@@ -82,11 +85,11 @@
 						course_id: '10',
 						course_name: '计算机组成原理',
 						cat_icon: '/static/cate_icons/course10.png',
-					},{
+					}, {
 						course_id: '11',
 						course_name: '操作系统',
 						cat_icon: '/static/cate_icons/course11.png',
-					},{
+					}, {
 						course_id: '12',
 						course_name: '大学计算机基础',
 						cat_icon: '/static/cate_icons/course12.png',
@@ -99,7 +102,7 @@
 			// 获取当前系统的信息
 			const sysInfo = uni.getSystemInfoSync()
 			// 为 wh 窗口可用高度动态赋值
-			this.wh = sysInfo.windowHeight
+			this.wh = sysInfo.windowHeight - 50 //搜索区50px
 			this.cateLevel2 = this.cateList[0].children
 			// this.getCateList();
 		},
@@ -122,9 +125,14 @@
 				//：动态绑定必须在scrollTop变化才变化
 				this.scrollTop = this.scrollTop === 0 ? 1 : 0
 			},
-			gotoCourseList(item2){
+			gotoCourseList(item2) {
 				uni.navigateTo({
-					url:'/subpkg/course_list/course_list?course_id='+item2.course_id
+					url: '/subpkg/course_list/course_list?course_id=' + item2.course_id
+				})
+			},
+			gotoSearch() {
+				uni.navigateTo({
+					url: '/subpkg/search/search',
 				})
 			}
 		}
@@ -140,7 +148,7 @@
 
 			.left-scroll-view-item {
 				line-height: 60px; //相比于height文字会居中
-				background-color: #f7f7f7;
+				background-color: #f7f7f7; //背景灰色
 				text-align: center;
 				font-size: 15px;
 

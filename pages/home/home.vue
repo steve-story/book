@@ -1,5 +1,9 @@
 <template>
 	<view>
+		<!-- 使用自定义的搜索组件 -->
+		<view class="search-box">
+			<my-search @click="gotoSearch"></my-search>
+		</view>
 		<!-- 轮播图区 -->
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
 			<!-- 循环渲染轮播图的 item 项 -->
@@ -34,7 +38,7 @@
 				<image :src="item.image_src" class="newsList_img"></image>
 			</view>
 		</view>
-		
+
 		<!-- 课程信息 -->
 		<view class="course_line">
 			<image src='/static/home_icons/courseicon.png' class="course_img"></image>
@@ -51,7 +55,7 @@
 				<image :src="item.image_src" class="courseList_img"></image>
 			</view>
 		</view>
-		
+
 
 
 	</view>
@@ -83,10 +87,10 @@
 					image_src: '/static/home_icons/news3.png',
 					news_id: '3'
 				}],
-				courseList:[{
+				courseList: [{
 					image_src: '/static/home_icons/course1.png',
 					courses_id: '1'
-				},{
+				}, {
 					image_src: '/static/home_icons/course2.png',
 					courses_id: '2'
 				}]
@@ -126,12 +130,26 @@
 				uni.switchTab({
 					url: '/pages/cate/cate'
 				})
+			},
+			gotoSearch() {
+				uni.navigateTo({
+					url: '/subpkg/search/search'
+				})
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
+	.search-box {
+		// 设置定位效果为“吸顶”
+		position: sticky;
+		// 吸顶的“位置”
+		top: 0;
+		// 提高层级，防止被轮播图覆盖
+		z-index: 999;
+	}
+
 	swiper {
 		height: 350rpx;
 
@@ -141,6 +159,7 @@
 			height: 100%;
 		}
 	}
+
 	// .nav-list {
 	// 	display: flex;
 	// 	justify-content: space-around;
@@ -169,10 +188,11 @@
 			margin-top: 16rpx;
 		}
 	}
+
 	.more {
 		margin-left: auto;
 		margin-top: 12rpx;
-	
+
 		// display: flex;
 		// flex-direction: row;
 		// justify-content: flex-end;
@@ -182,35 +202,39 @@
 			height: 60rpx;
 		}
 	}
-	.course_list,.news_list {
+
+	.course_list,
+	.news_list {
 		display: flex;
 		justify-content: space-around;
 		margin-top: 10rpx;
 		margin-bottom: 10rpx;
 	}
+
 	.newsList_img {
 		width: 230rpx;
 		height: 260rpx;
 	}
-	.courseList_img{
+
+	.courseList_img {
 		width: 308rpx;
 		height: 280rpx;
 	}
-	
-	.course_line{  
+
+	.course_line {
 		height: 85rpx;
 		display: flex;
 		flex-direction: row;
 		// border-bottom:  solid #646566;
 		background-color: #FFFFFF;
-		
+
 		.course_img {
 			margin: 12rpx;
 			margin-left: 12rpx;
 			width: 60rpx;
 			height: 60rpx;
 		}
-	    
+
 		.course_word {
 			margin-top: 16rpx;
 		}
